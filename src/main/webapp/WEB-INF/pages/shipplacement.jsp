@@ -12,6 +12,7 @@
     <title>shipplacement</title>
 </head>
 <body>
+<form>
 <table>
     <tr>
      <td>&nbsp;</td>
@@ -32,5 +33,7 @@
    </c:forEach>
 
 </table>
+    <button type="submit">i'm ready</button>
+</form>
 </body>
 </html>
