@@ -26,7 +26,7 @@
            <td>${row}</td>
            <c:forEach items="A,B,C,D,E,F,G,H,I,J" var="col">
                <td>
-                   <input type ="checkbox">
+                   <input type ="checkbox" name="cell" value="${col}${row}">
                </td>
            </c:forEach>
        </tr>
