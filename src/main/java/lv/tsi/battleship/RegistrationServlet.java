@@ -34,7 +34,7 @@ public class RegistrationServlet extends javax.servlet.http.HttpServlet {
         if (game.isCompleted()){
             response.sendRedirect("/battleship/shipplacement");
         } else {
-            response.sendRedirect("/battleship/waitreqistration");
+            response.sendRedirect("/battleship/waitregistration");
         }
 
     }
