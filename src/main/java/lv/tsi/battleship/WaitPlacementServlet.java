@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "WaitRegistrationServlet", urlPatterns = "/waitregistration")
-public class WaitRegistrationServlet extends HttpServlet {
+@WebServlet(name = "WaitPlacementServlet", urlPatterns = "/waitplacement")
+public class WaitPlacementServlet extends HttpServlet {
 
     @Inject
     private MyGame myGame;
@@ -23,12 +23,11 @@ public class WaitRegistrationServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Game game = myGame.getGame();
-        if (game.isCompleted()){
-            response.sendRedirect("/battleship/shipplacement");
+        if (game.isReady()){
+            response.sendRedirect("/battleship/game");
         } else {
             request.getRequestDispatcher("/WEB-INF/pages/waitregistration.jsp")
                     .include(request,response);
         }
-
     }
 }
