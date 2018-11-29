@@ -25,6 +25,9 @@ public class GamesServlet extends HttpServlet  {
         return;
     }
     myGame.getGame().fire(addr);
+    if (myGame.getGame().isFinished()){
+        response.sendRedirect("/battleship/result");
+    } else {
     doGet(request,response);
     }
 

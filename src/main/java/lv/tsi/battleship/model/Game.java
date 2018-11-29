@@ -6,6 +6,7 @@ public class Game {
     private User player1;
     private User player2;
     private boolean player1Turn = true;
+    private boolean finished = false;
 
     private User activeUser() {
         return player1Turn ? player1 : player2;
@@ -43,16 +44,29 @@ public class Game {
         return player1Turn;
     }
 
+    public boolean isFinished() {
+        return finished;
+    }
+
     public void fire(String addr) {
         CellState state = inactiveUser().getMyField().getState(addr);
         if (state == SHIP) {
             inactiveUser().getMyField().setState(addr, HIT);
             activeUser().getEnemyField().setState(addr, HIT);
+            checkWinningCondition();
             return;
         } else if (state == EMPTY) {
             inactiveUser().getMyField().setState(addr, MISS);
             activeUser().getEnemyField().setState(addr, MISS);
         }
         player1Turn = !player1Turn;
+    }
+
+    private void checkWinningCondition() {
+        if ( !inactiveUser().getMyField().hasMoreShips()) {
+            activeUser().setWinner(true);
+            finished = true;
+
+        }
     }
 }

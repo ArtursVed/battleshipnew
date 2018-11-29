@@ -9,6 +9,7 @@ public class User {
     private Field myField = new Field();
     private Field enemyField = new Field();
     private boolean ready = false;
+    private boolean winner = false;
 
 
     public Field getMyField() {
@@ -22,6 +23,14 @@ public class User {
 
     public boolean isReady() {
         return ready;
+    }
+
+    public boolean isWinner() {
+        return winner;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
     }
 
     public void setReady(boolean ready) {
