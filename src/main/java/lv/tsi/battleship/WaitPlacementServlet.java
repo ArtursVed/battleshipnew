@@ -24,7 +24,7 @@ public class WaitPlacementServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Game game = myGame.getGame();
         if (game.isReady()){
-            response.sendRedirect("/battleship/game");
+            response.sendRedirect("/battleship/games");
         } else {
             request.getRequestDispatcher("/WEB-INF/pages/waitregistration.jsp")
                     .include(request,response);
