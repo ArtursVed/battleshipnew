@@ -12,27 +12,28 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "GamesServlet", urlPatterns = "/games")
-public class GamesServlet extends HttpServlet  {
+public class GamesServlet extends HttpServlet {
 
     @Inject
 
     private MyGame myGame;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-  String addr = request.getParameter("cell");
-    if (!myGame.isMyTurn()) {
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-        return;
+        String addr = request.getParameter("cell");
+        if (!myGame.isMyTurn()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        myGame.getGame().fire(addr);
+        if (myGame.getGame().isFinished()) {
+            response.sendRedirect("/battleship/result");
+        } else {
+            doGet(request, response);
+        }
     }
-    myGame.getGame().fire(addr);
-    if (myGame.getGame().isFinished()){
-        response.sendRedirect("/battleship/result");
-    } else {
-    doGet(request,response);
-    }
+        protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
+        ServletException, IOException {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-     request.getRequestDispatcher("/WEB-INF/pages/games.jsp").include(request,response);
+            request.getRequestDispatcher("/WEB-INF/pages/games.jsp").include(request, response);
+        }
     }
-}
