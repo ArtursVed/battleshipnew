@@ -13,10 +13,10 @@ public class GamesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-       System.out.println("hello");
+       System.out.println("Hello");
 
         PrintWriter out = response.getWriter();
-        out.println("<h1> hellouuuu </h1>");
+        out.println("hellouuuu");
         out.close();
     }
 
