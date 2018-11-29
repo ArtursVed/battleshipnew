@@ -3,6 +3,7 @@ package lv.tsi.battleship.model;
 public class Game {
     private User player1;
     private User player2;
+    private boolean player1Turn = true;
 
     public boolean isCompleted() {
         return player1 != null && player2 != null;
@@ -26,5 +27,10 @@ public class Game {
 
     public void setPlayer2(User player2) {
         this.player2 = player2;
+    }
+
+
+    public boolean isPlayer1Turn() {
+        return player1Turn;
     }
 }

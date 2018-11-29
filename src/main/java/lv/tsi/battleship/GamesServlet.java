@@ -14,19 +14,11 @@ public class GamesServlet extends HttpServlet  {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-       System.out.println("Hello");
 
-        PrintWriter out = response.getWriter();
-        out.println("hellouuuu");
-        out.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("Hello");
-
-        PrintWriter out = response.getWriter();
-        out.println("hellouuuu");
-        out.close();
+     request.getRequestDispatcher("/WEB-INF/pages/games.jsp").include(request,response);
     }
 }
