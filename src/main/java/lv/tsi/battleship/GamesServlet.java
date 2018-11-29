@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "GamesServlet", urlPatterns = "/games")
 public class GamesServlet extends HttpServlet  {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
@@ -22,5 +23,10 @@ public class GamesServlet extends HttpServlet  {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        System.out.println("Hello");
+
+        PrintWriter out = response.getWriter();
+        out.println("hellouuuu");
+        out.close();
     }
 }

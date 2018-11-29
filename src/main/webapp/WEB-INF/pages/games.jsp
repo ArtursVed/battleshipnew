@@ -5,6 +5,7 @@
     <title>games</title>
 </head>
 <body>
-<h1>Please wait another player</h1>
+
+
 </body>
 </html>
