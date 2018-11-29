@@ -1,16 +1,26 @@
 package lv.tsi.battleship.model;
 
+import static lv.tsi.battleship.model.CellState.*;
+
 public class Game {
     private User player1;
     private User player2;
     private boolean player1Turn = true;
 
+    private User activeUser() {
+        return player1Turn ? player1 : player2;
+    }
+
+    private User inactiveUser() {
+        return !player1Turn ? player1 : player2;
+    }
+
     public boolean isCompleted() {
         return player1 != null && player2 != null;
     }
 
-    public boolean isReady(){
-        return player1.isReady();
+    public boolean isReady() {
+        return player1.isReady() && player2.isReady();
     }
 
     public User getPlayer1() {
@@ -29,8 +39,20 @@ public class Game {
         this.player2 = player2;
     }
 
-
     public boolean isPlayer1Turn() {
         return player1Turn;
+    }
+
+    public void fire(String addr) {
+        CellState state = inactiveUser().getMyField().getState(addr);
+        if (state == SHIP) {
+            inactiveUser().getMyField().setState(addr, HIT);
+            activeUser().getEnemyField().setState(addr, HIT);
+            return;
+        } else if (state == EMPTY) {
+            inactiveUser().getMyField().setState(addr, MISS);
+            activeUser().getEnemyField().setState(addr, MISS);
+        }
+        player1Turn = !player1Turn;
     }
 }

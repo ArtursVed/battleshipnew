@@ -4,6 +4,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <c:if test="${not myGame.myTurn}">
+        <meta http-equiv="refresh" content="5">
+    </c:if>
     <title>Games</title>
     <style>
         td.EMPTY {
@@ -25,6 +28,7 @@
     <table>
         <tr>
             <td>&nbsp;</td>
+
             <c:forEach items="A,B,C,D,E,F,G,H,I,J" var="col">
                 <td>${col}</td>
             </c:forEach>
@@ -37,7 +41,10 @@
                      <c:set var="addr" value="${col}${row}"/>
                     <td class =" ${myGame.user.enemyField.getState(addr)}">
                     
-                     <c:if test="${myGame.game.}"   
+                     <c:if test="${myGame.myTurn}">
+                         <input type= "radio" name="cell" value="${addr}">
+                     </c:if>
+
                     &nbsp;
 
                     </td>
@@ -62,14 +69,18 @@
                     <td class =" ${myGame.user.myField.getState(addr)}">
                      
                         &nbsp;
-
+                      
                     </td>
                 </c:forEach>
             </tr>
         </c:forEach>
 
     </table>
-    <button type="submit">i'm ready</button>
+
+    <c:if test="${myGame.myTurn}">
+        <button type="submit">Fire!</button>
+    </c:if>
+
 </form>
 
 </body>
