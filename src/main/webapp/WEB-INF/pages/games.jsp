@@ -5,17 +5,6 @@
     <title>games</title>
 </head>
 <body>
-
-<form method="post" action="GamesServlet">
-
-    <h1>hello aarrtt </h1>
-
-
-</form>
-
-
-
-
-
+<h1>Please wait another player</h1>
 </body>
 </html>
