@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="GamesServlet">
+<form method="post" action="GamesServlet">
 
     <h1>hello aarrtt </h1>
 
